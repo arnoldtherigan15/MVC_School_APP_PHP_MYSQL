@@ -28,6 +28,7 @@ class Database {
     }
 
     public function bind($param, $value, $type = null) {
+        // echo $param,$value,$type;
         if(is_null($type)) {
             switch (true) {
                 case is_int($value):
@@ -59,6 +60,10 @@ class Database {
     public function single() {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function rowCount() {
+        return $this->stmt->rowCount(); 
     }
 }
 ?>
